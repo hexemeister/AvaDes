@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
+<h:head>
+	<meta charset="UTF-8"/>  
+<style>
+
+input .unidade 
+{
+    width : 80px !important;
+    height: 20px !important;
+	font-size: 18px !important;
+}
+
+
+input .sigepe 
+{
+    width : 380px !important;
+    height: 20px !important;
+	font-size: 18px !important;
+}
+
+.ui-selectonemenu{
+     width: 350px !important;
+}
+.ui-selectonemenu-label{
+     width: 350px !important;
+}  
+</style>
+
+</h:head>
+<h:body style="background-color:#fff2e6;height:700px">
+<div align="center" style="vertical-align: middle;">
+	<div align="left" style="background-color:#F6E3CE;;width:650px;">
+
+
+	<p:panel id="basic"   style="margin-bottom:20px">
+	 <div id ="painel_proncipal" >
+    	<div id ="painel_proncipal" style="height: 50px;"><h:outputText value="&#160;" /></div>
+    	<div id ="painel_proncipal_titulo" style="height:50px;">
+    	<div  style="float:left;height: 30px; width:50px;"><h:outputText value="&#160;" /></div>
+    	<label style="font-size: 45px;vertical-align:initial;" >Comissão setorial</label>
+    	</div>
+        
+        <div id ="painel_proncipal_periodo" style="">
+        	<div  style="float:left;height: 20px; width:50px;font-size: 15px;"> <h:outputText value="&#160;" /><h:outputText value="&#160;" /></div>
+    		<div  style="float:left;height: 20px;width:270px;font-size: 15px;"> <p:outputLabel  value="Periodo: #{comissaosetorial.periodoVigente.nome}" /></div>
+    		<div  style="float:left;height: 20px;width:350px;font-size: 12px;"> </div>
+    		
+      		<div  style="clear:both;height: 30px;;"><h:outputText value="&#160;" /></div>
+      		<div  style="float:left;height: 160px; width:250px;"><h:outputText value="&#160;" /></div>
+    	  	<div  style="clear:both;height: 5px;;"><h:outputText value="&#160;" /></div>
+    		
+    		
+    	    		
+    		
+    		
+    		
+     
+    	<h:form id="f01">
+    	<div  style="clear:both;height: 10px;;"><h:outputText value="&#160;" /></div>
+		  <div  style="float:left;height: 20px;width:40px;">
+			<h:outputText value="&#160;" />
+	    </div>
+	     <div  style="float:left;height: 20px;width:100px;font-size:20px">
+			<h:outputText value="Unidades" />
+	    </div>
+	    
+	    <div  style="clear:both;height: 5px;;"><h:outputText value="&#160;" /></div>
+		
+		<div  style="float:left;height: 30px;width:40px;">
+			<h:outputText value="&#160;" />
+	    </div>
+		
+	   
+		<p:autoComplete id="dd"  class="unidade" value="#{comissaosetorial.unidade_cadastrada}" dropdown="true" completeMethod="#{comissaosetorial.completeUnidade}"
+                        var="theme" itemLabel="#{theme.nome}" itemValue="#{theme}" converter="unidadeCadastradaConverter" forceSelection="true" filter="true" filterMatchMode="startsWith"  inputStyle="width:460px" >
+         <p:ajax event="itemSelect" listener="#{comissaosetorial.unidadeSelecionada}" update=":f02,resumo" />
+        					<p:column style="width:80%;">
+				                <h:outputText value="#{theme.nome}" />
+				            </p:column>
+				 
+				 
+				 			<p:column style="font-weight: 700;">
+				            
+							 	<h:panelGroup rendered="#{theme.situacao=='Completa'}">
+									<h:outputText style="color: green;"   value="Completo" />
+								</h:panelGroup>
+								
+								<h:panelGroup rendered="#{theme.situacao=='Pendente'}">
+									<h:outputText style="color: red;" value="Pendente" />
+								</h:panelGroup>
+				                
+				                
+								<h:panelGroup rendered="#{theme.situacao=='Incompleta'}">
+									<h:outputText style="color: yellow;" value="Incompleto" />
+								</h:panelGroup>
+				            </p:column>
+        
+        	
+        </p:autoComplete>
+ 
+		  		 <h:panelGroup id="resumo">
+				      	<div  style="clear:both;height: 2px;"><h:outputText value="&#160;" /></div>
+						<div  style="float:left;height: 18px; width:50px;font-size: 15px;"><h:outputText value="&#160;" /></div>
+		    		
+		    			<div  style="float:left;height: 20px;width:100px;font-size:15px;"><h:outputText value="Comissões:" /></div>
+					   
+					   	<div  style="float:left;height: 10px;width:20px;font-size:15px;background-color:green; border-radius: 12px;margin-top:3px;"><h:outputText value="&#160;" /></div>
+					   
+						<div  style="float:left;height: 20px;width:70px;font-size:15px;margin-left:3px;"><h:outputText value="Completa:" /></div>
+					    <div  style="float:left;height: 20px;width:20px;font-size:15px;"><h:outputText value="#{comissaosetorial.unidadeCompleta}" /></div>
+					    <div  style="float:left;height: 20px;width:15px;color:green;"><h:outputText value="&#160;" /></div>
+					    
+					    <div  style="float:left;height: 10px;width:20px;font-size:15px;background-color:#FFCC00; border-radius: 12px;margin-top:3px;"><h:outputText value="&#160;" /></div>
+					    <div  style="float:left;height: 20px;width:80px;font-size:15px;margin-left:3px;"><h:outputText value="Incompleta:" /></div>
+					    <div  style="float:left;height: 20px;width:20px;font-size:15px;"><h:outputText value="#{comissaosetorial.unidadeIncompleta}" /></div>
+					    <div  style="float:left;height: 20px;width:15px;"><h:outputText value="&#160;" /></div>
+					    
+					    <div  style="float:left;height: 10px;width:20px;font-size:15px;background-color:red; border-radius: 12px;margin-top:3px;"><h:outputText value="&#160;" /></div>
+					    <div  style="float:left;height: 20px;width:70px;font-size:15px;margin-left:3px;"><h:outputText value="Pendente:" /></div>
+					    <div  style="float:left;height: 20px;width:20px;font-size:15px;"><h:outputText value="#{comissaosetorial.unidadePendente}" /></div>
+				  </h:panelGroup>
+	      
+	      
+		      
+		      	<div  style="clear:both;height: 40px;"><h:outputText value="&#160;" /></div>
+	    		</h:form>
+	    		
+	    		<h:form id="f02">
+				  <p:growl id="growl" showDetail="true" sticky="true" />  
+      
+				<h:panelGroup rendered="#{comissaosetorial.servidores.size()==0}">
+						<div  style="float:left;width:430px;font-size:20px;height:260px;">
+   							<h:outputText value="&#160;" />
+     					</div>	
+				</h:panelGroup>
+								
+								
+				<p:repeat value="#{comissaosetorial.servidores}" var="serv" varStatus="varStatus">
+		   
+    	       
+		       
+				    <div  style="float:left;width:430px;font-size:20px">
+		   				<div  style="float:left;width:50px;;font-size:20px"><h:outputText value="&#160;" /></div>
+		     			<h:outputText value="#{comissaosetorial.lista_de_cargos[varStatus.index]}" />
+		     		</div>
+		     		
+		     		
+		     		<div  style="clear:both;height: 5px;"><h:outputText value="&#160;" /></div>
+		     
+		     		<div  style="float:left;font-size:20px">
+		     		   <div  style="float:left;width:50px;font-size:20px">
+		     				<h:outputText value="&#160;" />
+		     			</div>
+		     		
+		     		
+		     		</div>
+		     		
+		     
+				    <div  style="float:left;height: 30px;width:100px;font-size: 18px;">
+				     		 
+				    		 <p:autoComplete id="auto_servidor_setorial" inputStyle="width: 80px" value="#{comissaosetorial.servidores[varStatus.index]}" completeMethod="#{comissaosetorial.completeServidor}"
+					                        var="theme" itemLabel="#{theme.sigepe}" itemValue="#{theme}" converter="servidorConverter"  forceSelection="true" >
+				           
+		                      <p:ajax event="itemSelect" listener="#{comissaosetorial.onItemSelectServidor}" update="nome#{theme.sigepe}" />
+					          <p:ajax event="keyup"   listener="#{comissaosetorial.keyup_siape(varStatus.index)}" update="nome#{theme.sigepe}" />  
+					            
+					           <f:selectItem itemLabel="Sigepe" itemValue="" />
+					            <p:column>
+					                <h:outputText value="#{theme.sigepe}" />
+					            </p:column>
+					 
+					            <p:column>
+					                <h:outputText value="#{theme.nome}" />
+					            </p:column>
+					             
+					        </p:autoComplete>
+					        <p:tooltip   for="auto_servidor_setorial" value="Matrihcula SIAPE do servidor indicado." position="top" style="font-size:15px;"/>
+							
+					</div>        
+				  
+				        <div style="margin-top:2px;font-size:20px" >
+				        <p:outputLabel  id="nome#{theme.sigepe}"  value="#{comissaosetorial.servidores[varStatus.index].nome}" />
+				     
+				        </div>
+				     
+				     
+				     <div  style="clear:both;height:55px;"><h:outputText value="&#160;" /></div>
+				     
+		      
+		
+		   </p:repeat>  
+		   
+		   
+		    <h:panelGroup  rendered="#{comissaosetorial.servidores.size() == 0}">
+					 <div  style="clear:both;height:50px;"><h:outputText value="&#160;" /></div>
+			</h:panelGroup>
+		   
+		   
+		   
+		
+		   
+		   
+		   
+		   
+		   
+		   
+		   		
+	    	
+					
+				
+				<div  style="clear:both;height: 10px;"><h:outputText value="&#160;" /></div>  	       
+				<div  style="clear:both;height: 1px;border-bottom: thick dotted #808080;border-top: none;border-left: none;border-top: right; border-width: 5px;"><h:outputText value="&#160;" /></div>
+				
+				<div  style="height: 20px;"></div>
+					
+					
+					
+					<div  style="float:left;width:350px;"></div>
+		    	    
+		         		<div  style="clear:both;height: 10px;"><h:outputText value="&#160;" /></div>
+			    						
+					
+	    		
+	    		<div align="left" style="width:650px;height:50px;"><h:outputText value="&#160;" />
+	    		
+				<div  style="float:left;height: 30px;width:300px;">
+		   			<h:outputText value="&#160;" />
+	    		</div>
+				<div  style="float:left;height: 30px;width:100px;">
+	    			 <p:commandButton value="Salvar"  actionListener="#{comissaosetorial.salvarComissao()}" style="width:100px;"   update=":f02:growl,:f01:resumo"/>
+	    		</div>
+	    		<div  style="float:left;height: 30px;width:30px;"><h:outputText value="&#160;" /></div>
+	    		<div  style="float:left;height: 30px;width:200px;">
+	    			 <p:commandButton value="Cancelar"  actionListener="#{comissaosetorial.cancelarComissao()}"  style="width:100px;"   update=":f01,f02"/>
+	    		</div>
+	    		</div>
+				</h:form>				
+        
+        </div>
+        
+        
+            
+
+    
+   
+        
+        
+               
+        
+    
+    
+    
+    
+    </div>
+    
+    </p:panel>
+	</div>
+</div>
+
+
+
+   
+    
+</h:body>
+</html>

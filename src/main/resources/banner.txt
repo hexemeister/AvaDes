@@ -1,0 +1,17 @@
+${AnsiColor.WHITE}          :::     :::     :::           :::        :::::::::       ::::::::::       :::::::: 
+${AnsiColor.WHITE}       :+: :+:   :+:     :+:         :+: :+:      :+:    :+:      :+:             :+:    :+: 
+${AnsiColor.BRIGHT_GREEN}     +:+   +:+  +:+     +:+        +:+   +:+     +:+    +:+      +:+             +:+         
+${AnsiColor.BRIGHT_GREEN}   +#++:++#++: +#+     +:+       +#++:++#++:    +#+    +:+      +#++:++#        +#++:++#++   
+${AnsiColor.GREEN}  +#+     +#+  +#+   +#+        +#+     +#+    +#+    +#+      +#+                    +#+    
+${AnsiColor.GREEN} #+#     #+#   #+#+#+#         #+#     #+#    #+#    #+#      #+#             #+#    #+#     
+${AnsiColor.GREEN}###     ###     ###           ###     ###    #########       ##########       ########
+${Ansi.DEFAULT}
+--------------------------------------------------------------------------------------
+${AnsiStyle.BOLD}${Ansi.BLACK}Nome do sistema : ${application.title}
+Versão do sistema : ${application.version}
+Versão formatada do sistema : ${application.formatted-version}
+Versão do Spring Boot : ${spring-boot-version}
+Versão formatada do Spring Boot : ${spring-boot.formatted-version}
+${Ansi.DEFAULT}--------------------------------------------------------------------------------------
+		${AnsiColor.BRIGHT_RED}::${Ansi.DEFAULT} ${AnsiColor.BRIGHT_RED}${AnsiStyle.UNDERLINE}Sistema de Avaliação de Desempenho${AnsiStyle.NORMAL}${AnsiColor.BRIGHT_RED} ::${Ansi.DEFAULT}${AnsiStyle.NORMAL}
+--------------------------------------------------------------------------------------
